@@ -23,8 +23,9 @@ class MarkdownConverter:
         Returns:
             增強後的文字
         """
-        # 移除分頁標記
-        text = re.sub(r'<---\s*Page\s*Split\s*--->\s*', '', text, flags=re.IGNORECASE)
+        # 完全移除分頁標記（讓被圖像分隔的段落能夠連接）
+        # 移除標記本身及其前後的換行符，保持段落連續性
+        text = re.sub(r'\n*<---\s*Page\s*Split\s*--->\n*', ' ', text, flags=re.IGNORECASE)
 
         # 替換 <center>FIGURE...</center> 為更清楚的 Markdown 格式
         pattern = r'<center>(FIGURE [^<]+)</center>'
