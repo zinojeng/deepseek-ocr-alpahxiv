@@ -187,10 +187,16 @@ def internal_server_error(error):
     }), 500
 
 
-if __name__ == '__main__':
+def main():
+    """啟動應用程式"""
     # 預設使用 5001 端口（5000 在 macOS 上常被 AirPlay Receiver 佔用）
+    # Zeabur/雲端部署會使用 PORT 環境變數
     port = int(os.getenv('PORT', 5001))
     debug = os.getenv('FLASK_ENV') == 'development'
 
     logger.info(f"啟動 Flask 應用於 port {port}")
     app.run(host='0.0.0.0', port=port, debug=debug)
+
+
+if __name__ == '__main__':
+    main()

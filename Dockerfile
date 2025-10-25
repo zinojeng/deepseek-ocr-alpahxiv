@@ -25,9 +25,10 @@ RUN mkdir -p uploads outputs
 # 設定環境變數
 ENV FLASK_APP=src/app.py
 ENV FLASK_ENV=production
+ENV PORT=8080
 
-# 暴露端口
-EXPOSE 5000
+# 暴露端口（Zeabur 使用 PORT 環境變數）
+EXPOSE 8080
 
 # 啟動命令
-CMD ["python", "src/app.py"]
+CMD ["python", "run.py"]

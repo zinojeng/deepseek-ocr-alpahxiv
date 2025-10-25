@@ -12,13 +12,21 @@
 
 ## 快速開始
 
-### 1. 安裝依賴
+### ☁️ 雲端部署（推薦）
+
+[![Deploy on Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates)
+
+詳細部署指南請參考 [DEPLOY.md](DEPLOY.md)
+
+### 💻 本地開發
+
+#### 1. 安裝依賴
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. 設定環境變數
+#### 2. 設定環境變數
 
 複製 `.env.example` 為 `.env` 並設定您的配置：
 
@@ -26,21 +34,27 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-### 3. 建立必要目錄
+#### 3. 建立必要目錄
 
 ```bash
 mkdir -p uploads outputs
 ```
 
-### 4. 啟動應用程式
+#### 4. 啟動應用程式
 
 ```bash
-python src/app.py
+python run.py
+```
+
+或使用啟動腳本：
+
+```bash
+./run.sh
 ```
 
 應用程式將在 `http://localhost:5001` 啟動。
 
-> **注意**: 預設使用端口 5001，因為 macOS 的 AirPlay Receiver 通常佔用 5000 端口。如需使用其他端口，可設定環境變數：`PORT=8000 python src/app.py`
+> **注意**: 預設使用端口 5001，因為 macOS 的 AirPlay Receiver 通常佔用 5000 端口。如需使用其他端口，可設定環境變數：`PORT=8000 python run.py`
 
 ## 使用方式
 
