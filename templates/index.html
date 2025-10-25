@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek OCR - PDF 文字識別</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 DeepSeek OCR</h1>
+            <p class="subtitle">高精度 PDF 文字識別 - 使用 AlphaXiv API</p>
+        </header>
+
+        <main>
+            <!-- 上傳區域 -->
+            <div class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <div class="upload-icon">📄</div>
+                    <h2>上傳 PDF 檔案</h2>
+                    <p>點擊選擇或拖曳檔案到此處</p>
+                    <p class="file-info">支援格式: PDF | 最大 16 MB</p>
+                    <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+                    <button class="btn btn-primary" id="selectFileBtn">選擇檔案</button>
+                </div>
+
+                <!-- 選中的檔案資訊 -->
+                <div class="file-selected" id="fileSelected" style="display: none;">
+                    <div class="file-details">
+                        <span class="file-icon">📄</span>
+                        <div class="file-name-size">
+                            <div class="file-name" id="fileName"></div>
+                            <div class="file-size" id="fileSize"></div>
+                        </div>
+                        <button class="btn btn-small btn-secondary" id="changeFileBtn">更換檔案</button>
+                    </div>
+                    <button class="btn btn-large btn-success" id="processBtn">開始處理</button>
+                </div>
+            </div>
+
+            <!-- 處理進度 -->
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-box">
+                    <div class="spinner"></div>
+                    <h3>正在處理中...</h3>
+                    <p id="progressText">正在上傳檔案並進行 OCR 識別，請稍候</p>
+                </div>
+            </div>
+
+            <!-- 結果顯示 -->
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-header">
+                    <h2>✅ 處理完成</h2>
+                    <div class="result-actions">
+                        <button class="btn btn-primary" id="downloadBtn">下載 Markdown</button>
+                        <button class="btn btn-secondary" id="newProcessBtn">處理新檔案</button>
+                    </div>
+                </div>
+
+                <!-- Markdown 預覽 -->
+                <div class="result-content">
+                    <div class="content-tabs">
+                        <button class="tab-btn active" data-tab="preview">預覽</button>
+                        <button class="tab-btn" data-tab="markdown">Markdown</button>
+                    </div>
+
+                    <div class="tab-content active" id="previewTab">
+                        <div class="markdown-preview" id="markdownPreview"></div>
+                    </div>
+
+                    <div class="tab-content" id="markdownTab">
+                        <pre class="markdown-raw" id="markdownRaw"></pre>
+                    </div>
+                </div>
+
+                <!-- 處理資訊 -->
+                <div class="metadata" id="metadata"></div>
+            </div>
+
+            <!-- 錯誤訊息 -->
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-box">
+                    <div class="error-icon">⚠️</div>
+                    <h3>處理失敗</h3>
+                    <p id="errorMessage"></p>
+                    <button class="btn btn-primary" id="retryBtn">重試</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by <a href="https://www.alphaxiv.org/models/deepseek/deepseek-ocr" target="_blank">AlphaXiv DeepSeek OCR API</a></p>
+            <p class="cost-info">💰 處理成本僅為傳統 OCR 工具的 1/10</p>
+        </footer>
+    </div>
+
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
