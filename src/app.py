@@ -4,10 +4,14 @@ DeepSeek OCR Flask 應用程式
 """
 
 import os
+import sys
 import logging
 from flask import Flask, render_template, request, jsonify, send_file
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
+
+# 將 src 目錄加入 Python 路徑
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from services.ocr_service import OCRService
 from utils.file_validator import FileValidator

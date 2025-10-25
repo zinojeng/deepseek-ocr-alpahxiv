@@ -7,8 +7,8 @@ import os
 import logging
 from typing import Dict, Any, Optional
 from datetime import datetime
-from ..api.alphaxiv_client import AlphaXivClient
-from ..utils.markdown_converter import MarkdownConverter
+from api.alphaxiv_client import AlphaXivClient
+from utils.markdown_converter import MarkdownConverter
 
 logger = logging.getLogger(__name__)
 
