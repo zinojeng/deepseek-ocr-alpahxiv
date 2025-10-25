@@ -138,9 +138,9 @@ async function handleProcess() {
     }
 
     // 檢查檔案大小
-    const maxSize = 16 * 1024 * 1024; // 16 MB
+    const maxSize = 100 * 1024 * 1024; // 100 MB
     if (selectedFile.size > maxSize) {
-        showError('檔案過大，請上傳小於 16 MB 的檔案');
+        showError('檔案過大，請上傳小於 100 MB 的檔案');
         return;
     }
 

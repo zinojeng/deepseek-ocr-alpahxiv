@@ -40,7 +40,10 @@ project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 設定上傳和輸出目錄為專案根目錄下的子目錄
 app.config['UPLOAD_FOLDER'] = os.path.join(project_root, os.getenv('UPLOAD_FOLDER', 'uploads'))
 app.config['OUTPUT_FOLDER'] = os.path.join(project_root, 'outputs')
-app.config['MAX_CONTENT_LENGTH'] = int(os.getenv('MAX_FILE_SIZE', 16 * 1024 * 1024))
+
+# 檔案大小限制 (0 表示無限制)
+max_file_size = int(os.getenv('MAX_FILE_SIZE', 100 * 1024 * 1024))  # 預設 100MB
+app.config['MAX_CONTENT_LENGTH'] = max_file_size if max_file_size > 0 else None
 
 # 建立必要目錄
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
