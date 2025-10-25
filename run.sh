@@ -35,7 +35,8 @@ fi
 
 # 啟動應用程式
 echo "✨ 啟動 Flask 應用程式..."
-echo "應用程式將在 http://localhost:5000 啟動"
+echo "應用程式將在 http://localhost:5001 啟動"
+echo "（預設使用 5001 端口，macOS 的 AirPlay Receiver 通常佔用 5000）"
 echo "按 Ctrl+C 停止應用程式"
 echo ""
 

@@ -38,11 +38,13 @@ mkdir -p uploads outputs
 python src/app.py
 ```
 
-應用程式將在 `http://localhost:5000` 啟動。
+應用程式將在 `http://localhost:5001` 啟動。
+
+> **注意**: 預設使用端口 5001，因為 macOS 的 AirPlay Receiver 通常佔用 5000 端口。如需使用其他端口，可設定環境變數：`PORT=8000 python src/app.py`
 
 ## 使用方式
 
-1. 開啟瀏覽器訪問 `http://localhost:5000`
+1. 開啟瀏覽器訪問 `http://localhost:5001`
 2. 點擊「選擇 PDF 檔案」上傳您的 PDF
 3. 點擊「開始處理」
 4. 等待處理完成後，可以：

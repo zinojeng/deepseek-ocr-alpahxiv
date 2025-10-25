@@ -183,7 +183,8 @@ def internal_server_error(error):
 
 
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 5000))
+    # 預設使用 5001 端口（5000 在 macOS 上常被 AirPlay Receiver 佔用）
+    port = int(os.getenv('PORT', 5001))
     debug = os.getenv('FLASK_ENV') == 'development'
 
     logger.info(f"啟動 Flask 應用於 port {port}")
