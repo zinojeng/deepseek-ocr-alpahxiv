@@ -174,9 +174,11 @@ def health_check():
 @app.errorhandler(413)
 def request_entity_too_large(error):
     """檔案過大錯誤處理"""
+    max_size = app.config.get('MAX_CONTENT_LENGTH', 100 * 1024 * 1024)
+    max_size_mb = max_size / (1024 * 1024) if max_size else 100
     return jsonify({
         'success': False,
-        'error': '檔案過大，請上傳小於 16 MB 的檔案'
+        'error': f'檔案過大，請上傳小於 {max_size_mb:.0f} MB 的檔案'
     }), 413
 
 

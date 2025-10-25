@@ -13,7 +13,8 @@ class FileValidator:
     """檔案驗證類別"""
 
     ALLOWED_EXTENSIONS = {'pdf'}
-    MAX_FILE_SIZE = 16 * 1024 * 1024  # 16 MB
+    # 從環境變數讀取最大檔案大小，預設 100 MB
+    MAX_FILE_SIZE = int(os.getenv('MAX_FILE_SIZE', 100 * 1024 * 1024))
 
     @staticmethod
     def allowed_file(filename: str) -> bool:

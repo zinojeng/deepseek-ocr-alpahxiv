@@ -439,3 +439,25 @@ footer .help-info a {
 footer .help-info a:hover {
     text-decoration: underline;
 }
+
+/* 作者資訊樣式 */
+footer .author-info {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 0.85em;
+    line-height: 1.6;
+}
+
+footer .author-info strong {
+    color: #667eea;
+}
+
+footer .author-info a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+footer .author-info a:hover {
+    text-decoration: underline;
+}
