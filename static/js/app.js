@@ -33,12 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
 // 設定事件監聽器
 function setupEventListeners() {
     // 檔案選擇
-    selectFileBtn.addEventListener('click', () => fileInput.click());
-    changeFileBtn.addEventListener('click', () => fileInput.click());
+    selectFileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileInput.click();
+    });
+    changeFileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileInput.click();
+    });
     fileInput.addEventListener('change', handleFileSelect);
 
     // 拖放
-    uploadBox.addEventListener('click', () => fileInput.click());
+    uploadBox.addEventListener('click', (e) => {
+        // 只有點擊背景區域才觸發，避免與按鈕衝突
+        if (e.target === uploadBox || e.target.classList.contains('upload-icon') ||
+            e.target.tagName === 'H2' || e.target.tagName === 'P') {
+            fileInput.click();
+        }
+    });
     uploadBox.addEventListener('dragover', handleDragOver);
     uploadBox.addEventListener('dragleave', handleDragLeave);
     uploadBox.addEventListener('drop', handleDrop);

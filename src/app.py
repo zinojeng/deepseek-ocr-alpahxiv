@@ -33,8 +33,13 @@ app = Flask(__name__,
 
 # 設定
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
-app.config['UPLOAD_FOLDER'] = os.getenv('UPLOAD_FOLDER', 'uploads')
-app.config['OUTPUT_FOLDER'] = 'outputs'
+
+# 取得專案根目錄（src 的父目錄）
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# 設定上傳和輸出目錄為專案根目錄下的子目錄
+app.config['UPLOAD_FOLDER'] = os.path.join(project_root, os.getenv('UPLOAD_FOLDER', 'uploads'))
+app.config['OUTPUT_FOLDER'] = os.path.join(project_root, 'outputs')
 app.config['MAX_CONTENT_LENGTH'] = int(os.getenv('MAX_FILE_SIZE', 16 * 1024 * 1024))
 
 # 建立必要目錄
